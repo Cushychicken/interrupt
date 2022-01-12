@@ -32,11 +32,11 @@ The other sanitizers in the family include
 [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html),
 [LeakSanitizer](https://clang.llvm.org/docs/LeakSanitizer.html), and others.
 
->Note: ***AddressSanitizer*** is a very powerful tool for detecting memory
-out-of-bounds errors, and I highly recommend enabling it in your unit tests. It
-is worthy of a dedicated post so we won't go into too much detail here, other
-than it needs to be carefully integrated with the host platform- it works best
-on Linux (though it is available on some other platforms)
+> Note: **_AddressSanitizer_** is a very powerful tool for detecting memory
+> out-of-bounds errors, and I highly recommend enabling it in your unit tests.
+> It is worthy of a dedicated post so we won't go into too much detail here,
+> other than it needs to be carefully integrated with the host platform- it
+> works best on Linux (though it is available on some other platforms)
 
 UBSan can catch several types of undefined behavior, for example:
 
@@ -120,7 +120,7 @@ This type of bug is very popular over at
 
 #### With UBsan
 
-Building the same program *with* UBSan:
+Building the same program _with_ UBSan:
 
 ```bash
 ❯ gcc -fsanitize=undefined ubsan-basic.c -o ubsan-basic
@@ -244,9 +244,11 @@ if you are headed down that path
 is worth a look!
 
 <!-- Interrupt Keep START -->
+
 {% include newsletter.html %}
 
 {% include submit-pr.html %}
+
 <!-- Interrupt Keep END -->
 
 {:.no_toc}

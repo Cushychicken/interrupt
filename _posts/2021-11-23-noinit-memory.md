@@ -1,6 +1,8 @@
 ---
 title: "Pocket article: How to implement and use `.noinit` RAM"
-description: Explanation of a non-initialized memory section for an embedded program, how it impacts application and bootloader, and some sample implementations.
+description:
+  Explanation of a non-initialized memory section for an embedded program, how
+  it impacts application and bootloader, and some sample implementations.
 author: noah
 image: img/noinit/cover.png # 1200x630
 ---
@@ -34,10 +36,9 @@ how to implement it, and how it can be used in a typical embedded system.
 
 For more background, see these references on linker scripts:
 
-- [From Zero to main(): Demystifying Firmware Linker Scripts]({% post_url 2019-06-25-how-to-write-linker-scripts-for-firmware %})
-- [Stargirl Flower's _outstanding_ "The most thoroughly commented linker script
-  (probably)"
-  post](https://blog.thea.codes/the-most-thoroughly-commented-linker-script/)
+- [From Zero to main(): Demystifying Firmware Linker
+  Scripts]({% post_url 2019-06-25-how-to-write-linker-scripts-for-firmware %})
+- [Stargirl Flower's _outstanding_ "The most thoroughly commented linker script (probably)" post](https://blog.thea.codes/the-most-thoroughly-commented-linker-script/)
 - [Elecia White's (of embedded.fm !) excellent Memory Map talk](https://www.youtube.com/watch?v=XRXLUcbJIxY)
 
 A typical small embedded device (running bare-metal or an RTOS) will usually
@@ -198,9 +199,8 @@ be implemented and used
 
 ### No bootloader, just application
 
-(See [How to write a bootloader from scratch (The Interrupt): Message passing to
-catch reboot
-loops](https://interrupt.memfault.com/blog/how-to-write-a-bootloader-from-scratch#message-passing-to-catch-reboot-loops)
+(See
+[How to write a bootloader from scratch (The Interrupt): Message passing to catch reboot loops](https://interrupt.memfault.com/blog/how-to-write-a-bootloader-from-scratch#message-passing-to-catch-reboot-loops)
 for another example of this!)
 
 <!--
@@ -430,8 +430,8 @@ including stack and heap, from lowest to highest memory address:
 .stack (end of RAM, grows down)
 ```
 
-Of course, if you're lucky, there may be a small reserve of RAM ([backup
-RAM](#backup-ram)) that can be used instead!
+Of course, if you're lucky, there may be a small reserve of RAM
+([backup RAM](#backup-ram)) that can be used instead!
 
 ### Gotchas: Watch out for ROM bootloaders (they use RAM too)
 

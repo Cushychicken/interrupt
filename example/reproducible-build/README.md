@@ -1,7 +1,9 @@
 # Introduction
 
-A minimal Cortex-M startup enviornment targetting the NRF52840-DK written entirely in C (inspired
-by [this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for illustrative purposes
+A minimal Cortex-M startup enviornment targetting the NRF52840-DK written
+entirely in C (inspired by
+[this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for
+illustrative purposes
 
 There are only two files:
 
@@ -10,10 +12,10 @@ There are only two files:
 
 A bare bones `GCC/ARM_CM4F` of FreeRTOS was added to the project.
 
-On boot, a "Ping" **FreeRTOS** task and a "Pong" **FreeRTOS** task are created. The "Ping" task sends a
-message to the "Pong" task once per second and each time the event loop in a task runs, I've added
-a breakpoint instruction so we can confirm with the debugger the tasks are switching between each
-other.
+On boot, a "Ping" **FreeRTOS** task and a "Pong" **FreeRTOS** task are created.
+The "Ping" task sends a message to the "Pong" task once per second and each time
+the event loop in a task runs, I've added a breakpoint instruction so we can
+confirm with the debugger the tasks are switching between each other.
 
 # Compiling & Running
 

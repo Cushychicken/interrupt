@@ -11,8 +11,7 @@
 # It will now show up in the front page when running Jekyll locally.
 
 title: Post Title
-description:
-  Post Description (~140 words, used for discoverability and SEO)
+description: Post Description (~140 words, used for discoverability and SEO)
 author: tyler
 image: img/<post-slug>/cover.png # 1200x630
 ---
@@ -35,12 +34,12 @@ Optional motivation to continue onwards
 
 ## Conclusion
 
-
-
 <!-- Interrupt Keep START -->
+
 {% include newsletter.html %}
 
 {% include submit-pr.html %}
+
 <!-- Interrupt Keep END -->
 
 {:.no_toc}

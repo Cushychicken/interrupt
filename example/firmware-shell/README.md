@@ -2,7 +2,6 @@
 
 [https://interrupt.memfault.com/blog/firmware-shell](https://interrupt.memfault.com/blog/firmware-shell)
 
-
 ## Setup
 
 ```

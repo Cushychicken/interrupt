@@ -1,6 +1,7 @@
 # Introduction
 
-A small example application used to demonstrate the impact of various compilation flags
+A small example application used to demonstrate the impact of various
+compilation flags
 
 ## Usage
 

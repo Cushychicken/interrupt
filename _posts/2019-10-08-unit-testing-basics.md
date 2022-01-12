@@ -30,10 +30,11 @@ framework.
 
 <!-- excerpt end -->
 
-This is the second post in our [Building Better Firmware series]({% tag_url better-firmware %}),
-following the [post]({% post_url 2019-09-17-continuous-integration-for-firmware %})
-about Continuous Integration for firmware projects, which is a wonderful pre-cursor
-to this post.
+This is the second post in our [Building Better Firmware
+series]({% tag_url better-firmware %}), following the
+[post]({% post_url 2019-09-17-continuous-integration-for-firmware %}) about
+Continuous Integration for firmware projects, which is a wonderful pre-cursor to
+this post.
 
 {% include toc.html %}
 
@@ -454,7 +455,7 @@ We are not going to cover examples of mocks and how to implement them (the topic
 is big enough for another post), but some pseudo code is shown below to give an
 understanding:
 
-> Learn more about mocks in our separate post, [Unit Testing with
+> Learn more about mocks in our separate post, [Unit Testing with >
 > Mocks]({% post_url 2020-05-12-unit-test-mocking %}).
 
 ```c++
@@ -1138,7 +1139,8 @@ tests, so you can be sure that the piece of code was tested in some capacity.
 Note that code coverage doesn't measure the different behaviors a code path
 **could take**, but only that a particular code path **was taken**.
 
-To generate a coverage report for our minimal example, let's first install `lcov`.
+To generate a coverage report for our minimal example, let's first install
+`lcov`.
 
 ```
 # macOS
@@ -1180,7 +1182,8 @@ $ open build/test_coverage/index.html
 $ firefox build/test_coverage/index.html
 ```
 
-Below is the coverage report for our minimal example. It's quite basic because there isn't much code being tested. 
+Below is the coverage report for our minimal example. It's quite basic because
+there isn't much code being tested.
 
 ![]({% img_url unit-testing-basics/code_coverage_minimal.png %})
 
@@ -1282,7 +1285,7 @@ mine.
 I hope this post has been useful and that it has inspired you to consider
 writing a unit test for your next new embedded software module.
 
-> Want to keep reading? Check out our next post about unit testing, [Unit
+> Want to keep reading? Check out our next post about unit testing, [Unit >
 > Testing with Mocks]({% post_url 2020-05-12-unit-test-mocking %}).
 
 You can find the examples shown in this post
@@ -1294,11 +1297,18 @@ You can find the examples shown in this post
 
 ## Reference & Links
 
-[^0]: [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
-[^1]: [2017 Embedded/EETimes Embedded Markets Study](https://www.embedded.com/electronics-blogs/embedded-market-surveys/4458724/2017-Embedded-Market-Survey)
-[^2]: [Atlassian Code Coverage Overview](https://www.atlassian.com/continuous-delivery/software-testing/code-coverage)
+[^0]:
+    [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
+
+[^1]:
+    [2017 Embedded/EETimes Embedded Markets Study](https://www.embedded.com/electronics-blogs/embedded-market-surveys/4458724/2017-Embedded-Market-Survey)
+
+[^2]:
+    [Atlassian Code Coverage Overview](https://www.atlassian.com/continuous-delivery/software-testing/code-coverage)
+
 [^4]: [littlefs Github page](https://github.com/ARMmbed/littlefs)
 [^5]: [Memfault Public SDK](https://github.com/memfault/memfault-firmware-sdk)
-[^6]: [AddressSanitizer](https://github.com/google/sanitizers/wiki/AddressSanitizer)
+[^6]:
+    [AddressSanitizer](https://github.com/google/sanitizers/wiki/AddressSanitizer)
 
 {% include submit-pr.html %}

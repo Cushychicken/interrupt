@@ -95,9 +95,7 @@ isn't satisfied, I'd start there.
   (LTO)]({% post_url 2019-10-22-best-and-worst-gcc-clang-compiler-flags %}#-flto)
   as the linking step sometimes becomes as slow as the entire build itself! If
   you have enabled it due to code size constraints, I suggest checking out
-  Interrupt's
-  [code size posts]({% tag_url fw-code-size %}) for
-  easy wins.
+  Interrupt's [code size posts]({% tag_url fw-code-size %}) for easy wins.
 
 ## Example Build Environment
 
@@ -629,14 +627,31 @@ _All the code used in this blog post is available on
 [^1]: [ccache](https://ccache.dev/)
 [^2]: [icecc - IceCream](https://github.com/icecc/icecream)
 [^3]: [Mozilla sccache](https://github.com/mozilla/sccache)
-[^4]: [STM32Cube LwIP_HTTP_Server_Netconn_RTOS](https://github.com/STMicroelectronics/STM32CubeF4/tree/master/Projects/STM32F429ZI-Nucleo/Applications/LwIP/LwIP_HTTP_Server_Netconn_RTOS)
+[^4]:
+    [STM32Cube LwIP_HTTP_Server_Netconn_RTOS](https://github.com/STMicroelectronics/STM32CubeF4/tree/master/Projects/STM32F429ZI-Nucleo/Applications/LwIP/LwIP_HTTP_Server_Netconn_RTOS)
+
 [^6]: [Include What You Use](https://include-what-you-use.org/)
-[^7]: [Make Auto Dependency Generation](http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/)
-[^8]: [Make Manual - Functions for String Substitution and Analysis](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions)
-[^9]: [GNU ARM Embedded Toolchain 8-2019-q3](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+[^7]:
+    [Make Auto Dependency Generation](http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/)
+
+[^8]:
+    [Make Manual - Functions for String Substitution and Analysis](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions)
+
+[^9]:
+    [GNU ARM Embedded Toolchain 8-2019-q3](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+
 [^10]: [stm32cube-gcc](https://github.com/stv0g/stm32cube-gcc)
-[^11]: [Forward Declarations Blog Post](https://gieseanw.wordpress.com/2018/02/25/the-joys-of-forward-declarations-results-from-the-real-world/)
-[^12]: [GCC - Using Precompiled Headers](https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html)
-[^13]: [Make - Parallel Output](https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html)
-[^14]: [Portability of #pragma once](https://en.wikipedia.org/wiki/Pragma_once#Portability)
-[^15]: [Recursive Make](https://www.gnu.org/software/make/manual/html_node/Recursion.html)
+[^11]:
+    [Forward Declarations Blog Post](https://gieseanw.wordpress.com/2018/02/25/the-joys-of-forward-declarations-results-from-the-real-world/)
+
+[^12]:
+    [GCC - Using Precompiled Headers](https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html)
+
+[^13]:
+    [Make - Parallel Output](https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html)
+
+[^14]:
+    [Portability of #pragma once](https://en.wikipedia.org/wiki/Pragma_once#Portability)
+
+[^15]:
+    [Recursive Make](https://www.gnu.org/software/make/manual/html_node/Recursion.html)

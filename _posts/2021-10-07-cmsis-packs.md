@@ -59,8 +59,9 @@ courtesy of one of my favorite tools: **PyOCD**
 
 > PyOCD integrates CMSIS-Pack management as a way of accessing flash algorithms
 > for chips not natively supported by the tool. It's a pretty awesome way to
-> provide flashing support to a LOT of chips!<br>
-> To learn more, check out our [Deep Dive into ARM Cortex-M Debug Interfaces]({% post_url 2019-08-06-a-deep-dive-into-arm-cortex-m-debug-interfaces %}).
+> provide flashing support to a LOT of chips!<br> To learn more, check out our
+> [Deep Dive into ARM Cortex-M Debug
+> Interfaces]({% post_url 2019-08-06-a-deep-dive-into-arm-cortex-m-debug-interfaces %}).
 
 For example, if I wanted the CMSIS-Pack for an Atmel SAMD21 chip, I can run
 these commands from my terminal:
@@ -259,17 +260,17 @@ watchpoint and waits for the chip to halt after reset.
 ## SVD File
 
 This is another XML file that contains information about the peripheral
-registers in the chip. Under certain conditions, it's **_invaluable_**; some examples
-I've used before:
+registers in the chip. Under certain conditions, it's **_invaluable_**; some
+examples I've used before:
 
 - using [PyCortexMDebug in gdb]({% post_url 2020-10-20-advanced-gdb
-  %}#svd-files-and-peripheral-registers) to pretty-print register values while
-  debugging 😍
+  %}#svd-files-and-peripheral-registers) to pretty-print register values while debugging
+  😍
 - generating language bindings over the memory-mapped peripherals:
   <https://github.com/rust-embedded/svd2rust>
 
-> Tip: always be careful when using these SVD files; they occasionally can
-> have mistakes in them, which can be really confusing. When in doubt, check the
+> Tip: always be careful when using these SVD files; they occasionally can have
+> mistakes in them, which can be really confusing. When in doubt, check the
 > datasheet or reference implementations (eg CMSIS headers) as a separate
 > source.
 
@@ -353,8 +354,7 @@ project to keep an eye on:
 
 - CMSIS Pack official documentation:<br/>
   <https://arm-software.github.io/CMSIS_5/Pack/html/cp_Packs.html>
-- Pack
-  registry:<br/>
+- Pack registry:<br/>
   <https://developer.arm.com/tools-and-software/embedded/cmsis/cmsis-packs>
 - PyOCD documentation on Packs:<br/>
   <https://github.com/pyocd/pyOCD/blob/main/docs/target_support.md#cmsis-packs>

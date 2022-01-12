@@ -6,8 +6,8 @@ author: noah
 ---
 
 [Newlib](http://www.sourceware.org/newlib/) is a very popular libc targeting
-embedded systems. It's the libc that ships with the [GNU Arm Embedded
-Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
+embedded systems. It's the libc that ships with the
+[GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm)
 published by ARM.
 
 <!-- excerpt start -->
@@ -73,9 +73,10 @@ looking at the source tarball, where the build script sets these CFLAGS (see
     saveenvvar CFLAGS_FOR_TARGET '-g -Os -ffunction-sections -fdata-sections'
 ```
 
-When compiling with optimization level `-Os`, the GCC compiler will set `#define
-__OPTIMIZE_SIZE__ 1` as a built-in define. You can see this by running the
-following command, which dumps the built-in preprocessor definitions to stdout:
+When compiling with optimization level `-Os`, the GCC compiler will set
+`#define __OPTIMIZE_SIZE__ 1` as a built-in define. You can see this by running
+the following command, which dumps the built-in preprocessor definitions to
+stdout:
 
 ```bash
 arm-none-eabi-gcc -Os -dM -E - < /dev/null
@@ -205,6 +206,7 @@ do is:
 1. copy the newlib `memcpy` function into a file in our project, eg `memcpy.c`
 2. add the file to the sources we're compiling
 3. we have to make a couple of modifications to get the result we want:
+
    1. add a line `#undef __OPTIMIZE_SIZE__` to the file; we saw GCC will set
       this flag if we enable `-Os` when compiling
    2. add the following definition (which is present in the newlib build):
@@ -317,9 +319,11 @@ You can see the example project here:
 [https://github.com/noahp/pico-c-cortex-m/tree/c7e9a3178ff7b11828482af989e216c75cd696a2](https://github.com/noahp/pico-c-cortex-m/tree/c7e9a3178ff7b11828482af989e216c75cd696a2)
 
 <!-- Interrupt Keep START -->
+
 {% include newsletter.html %}
 
 {% include submit-pr.html %}
+
 <!-- Interrupt Keep END -->
 
 {:.no_toc}

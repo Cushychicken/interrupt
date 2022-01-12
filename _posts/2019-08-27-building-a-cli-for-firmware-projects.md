@@ -220,9 +220,10 @@ SDK "Blinky" project.
 ### Installing Invoke
 
 I highly recommend using a virtual environment[^4], which is a way to sandbox
-your python environment for your project. [This guide](https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv) is a good starting
-point. In this example, I will be using Python 3.6, which has the `virtualenv`
-command available already.
+your python environment for your project.
+[This guide](https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv)
+is a good starting point. In this example, I will be using Python 3.6, which has
+the `virtualenv` command available already.
 
 ```
 $ virtualenv venv
@@ -557,7 +558,12 @@ _All the code used in this blog post is available on
 
 ## Reference & Links
 
-[^1]: [Invoke Configuration Docs](http://docs.pyinvoke.org/en/0.11.1/concepts/configuration.html)
-[^2]: [Invoke Argument Docs](http://docs.pyinvoke.org/en/0.11.1/concepts/cli/intro.html#tasks-and-task-options)
+[^1]:
+    [Invoke Configuration Docs](http://docs.pyinvoke.org/en/0.11.1/concepts/configuration.html)
+
+[^2]:
+    [Invoke Argument Docs](http://docs.pyinvoke.org/en/0.11.1/concepts/cli/intro.html#tasks-and-task-options)
+
 [^3]: [Python pdb Docs](https://docs.python.org/3/library/pdb.html)
-[^4]: [Virtualenv Tutorial](https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv)
+[^4]:
+    [Virtualenv Tutorial](https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv)

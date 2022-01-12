@@ -1,6 +1,8 @@
 ---
 title: "Tools for Firmware Code Size Optimization"
-description: "Overview of useful tools such as GNU size, nm, and puncover to help reduce code size usage of an ARM firmware binary"
+description:
+  "Overview of useful tools such as GNU size, nm, and puncover to help reduce
+  code size usage of an ARM firmware binary"
 author: francois
 tags: [fw-code-size]
 ---
@@ -9,13 +11,13 @@ tags: [fw-code-size]
 
 Every firmware engineer has run out of code space at some point or another.
 Whether they are trying to cram in another feature, or to make enough space for
-[A/B firmware
-updates](https://sbabic.github.io/swupdate/overview.html#double-copy-with-fall-back)
+[A/B firmware updates](https://sbabic.github.io/swupdate/overview.html#double-copy-with-fall-back)
 more code space is always better.
 
-In this [series of posts]({% tag_url fw-code-size %}), we'll explore ways to save code space and ways not to
-do it. We will cover compiler options, coding style, logging, as well as
-desperate hacks when all you need is another 24 bytes.
+In this [series of posts]({% tag_url fw-code-size %}), we'll explore ways to
+save code space and ways not to do it. We will cover compiler options, coding
+style, logging, as well as desperate hacks when all you need is another 24
+bytes.
 
 But first, let's talk about measuring code size.
 
@@ -24,9 +26,10 @@ But first, let's talk about measuring code size.
 ## Why measure?
 
 Optimization is often counter intuitive. Don't take my word for it: this is one
-of the topics [Microsoft's Raymond
-Chen](https://devblogs.microsoft.com/oldnewthing/20041216-00/?p=36973) and [Unix
-programmers](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch12s02.html)
+of the topics
+[Microsoft's Raymond Chen](https://devblogs.microsoft.com/oldnewthing/20041216-00/?p=36973)
+and
+[Unix programmers](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch12s02.html)
 agree on!
 
 So before you do anything, measure where your code size is going. You may be
@@ -47,9 +50,10 @@ $ arm-none-eabi-size build/with-libc.elf
 ```
 
 So in this program we have:
-* 10800 bytes of `text`, which is code
-* 104 bytes of `data`, which is statically initalized memory
-* 8272 bytes of `bss`, which is zero-initialized memory
+
+- 10800 bytes of `text`, which is code
+- 104 bytes of `data`, which is statically initalized memory
+- 8272 bytes of `bss`, which is zero-initialized memory
 
 Unfortunately, the output of this tool is a little misleading. You may think
 that your program will occupy `10800` bytes of flash, but this is not the case.
@@ -63,7 +67,7 @@ index a07cc82b..f49e73e2 100644
 --- a/with-libc/samd21g18a_flash.ld
 +++ b/with-libc/samd21g18a_flash.ld
 @@ -3,7 +3,7 @@ OUTPUT_ARCH(arm)
- 
+
  MEMORY
  {
 -  rom      (rx)  : ORIGIN = 0x00000000, LENGTH = 0x00040000
@@ -85,8 +89,8 @@ collect2: error: ld returned 1 exit status
 make: *** [build/with-libc.elf] Error 1
 ```
 
-The 104 bytes overflow hints at the cause: we are overflowing our flash by
-the size of our `data` section. This is because initialization values for our
+The 104 bytes overflow hints at the cause: we are overflowing our flash by the
+size of our `data` section. This is because initialization values for our
 initialized static variables are stored in flash as well.
 
 To avoid confusion, I prefer to use a small script to compute the sizes:
@@ -134,6 +138,7 @@ print_region $ram $max_ram "RAM"
 ```
 
 which gives us:
+
 ```terminal
 $ ./get-fw-size build/with-libc.elf 0x40000
 0x8000
@@ -141,11 +146,12 @@ Flash used: 10904 / 262144 (4%)
 RAM used: 8376 / 32768 (25%)
 ```
 
-Stick that in your Makefiles, and you'll have the size as you build
-your firmware.
+Stick that in your Makefiles, and you'll have the size as you build your
+firmware.
 
-Note that an alternative to running `size` is to add the `-Wl,--print-memory-usage`
-link-time flag which will give you something that looks like this:
+Note that an alternative to running `size` is to add the
+`-Wl,--print-memory-usage` link-time flag which will give you something that
+looks like this:
 
 ```terminal
 Memory region         Used Size  Region Size  %age Used
@@ -159,7 +165,7 @@ and `bss`.
 
 ## Digging into functions
 
-The above tells us *how much* code space we are using, but not *why*. To answer
+The above tells us _how much_ code space we are using, but not _why_. To answer
 the latter, we need to go deeper.
 
 This is where another tool bundled with the GNU ARM toolchain comes in handy:
@@ -208,15 +214,15 @@ $ arm-none-eabi-nm --print-size --size-sort --radix=d build/with-libc.elf | tail
 
 Note: you can also add `-l` to get filename & line # for each symbol.
 
-Here we see that our largest symbol is `_usart_set_config` which uses 692
-bytes of flash.
+Here we see that our largest symbol is `_usart_set_config` which uses 692 bytes
+of flash.
 
 ## Puncover
 
 Although you can get quite far with the ARM GNU tools, my favorite tool for code
-size analysis by far is [Puncover](https://github.com/memfault/puncover).
-It was built by [Heiko Behrens](https://heikobehrens.net/), my former
-coworker at Pebble.
+size analysis by far is [Puncover](https://github.com/memfault/puncover). It was
+built by [Heiko Behrens](https://heikobehrens.net/), my former coworker at
+Pebble.
 
 Puncover will give you a full hierarchical view of both code size and static
 memory per module, file, and function. See the screenshot below:
@@ -239,11 +245,11 @@ In order to for puncover to work, our elf file needs to contain the requisite
 information. As such, you'll need to make sure you've got the following CFLAGS
 set:
 
-* `-g`: this generates debug information which puncover requires for analysis
-* `-fdebug-prefix-map=/=`: this flag forces gcc to collect full paths for
+- `-g`: this generates debug information which puncover requires for analysis
+- `-fdebug-prefix-map=/=`: this flag forces gcc to collect full paths for
   filenames. This allows puncover to create the hierarchical view of the code.
-Even better would be to use your repository's root (usually found by running
-`git rev-parse --show-toplevel`).
+  Even better would be to use your repository's root (usually found by running
+  `git rev-parse --show-toplevel`).
 
 I typically add those two to my CFLAGS for every project directly in my
 Makefile.

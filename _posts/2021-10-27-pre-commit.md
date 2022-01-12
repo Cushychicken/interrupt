@@ -14,10 +14,10 @@ trying to get a new firmware build released.
 
 This is where automated formatting and linting tools come in. These tools are
 generally run in [continuous integration]({% post_url
-2019-09-17-continuous-integration-for-firmware %}) to make sure that all code
-committed to the main branch follows the team's agreed-upon format and
-structure. We can do one better and hook up these tools to run locally on any
-commit or update to a version-controlled branch by using git hooks.
+2019-09-17-continuous-integration-for-firmware %}) to make sure that all code committed
+to the main branch follows the team's agreed-upon format and structure. We can do
+one better and hook up these tools to run locally on any commit or update to a version-controlled
+branch by using git hooks.
 
 I'm here to talk about one of my favorite tools that is built upon git hooks,
 [pre-commit](https://pre-commit.com/), and specifically to detail how you can
@@ -73,8 +73,8 @@ generally lighter (in terms of setup and computation) compared to full static
 analysis. Typically these tools are designed to detect, for example:
 
 - some simple bug categories (similar to extended compiler warnings)
-- possible stylistic errors ([an
-  example](https://clang.llvm.org/extra/clang-tidy/checks/bugprone-suspicious-missing-comma.html))
+- possible stylistic errors
+  ([an example](https://clang.llvm.org/extra/clang-tidy/checks/bugprone-suspicious-missing-comma.html))
 - security-related checks (eg. using `sprintf` instead of `snprintf`)
 
 These types of tools are _very_ common in other software engineering domains
@@ -109,8 +109,8 @@ I think it's generally preferable to have a consistent style throughout a
 codebase- automated styling makes it easy!
 
 Most editors/IDE's will support a way to run styling (eg VSCode has the
-`editor.formatOnSave` option, including supporting formatting [only modified
-lines](https://code.visualstudio.com/updates/v1_49#_only-format-modified-text)).
+`editor.formatOnSave` option, including supporting formatting
+[only modified lines](https://code.visualstudio.com/updates/v1_49#_only-format-modified-text)).
 
 ### 3. 🐛 Catch bugs or typos
 
@@ -151,8 +151,8 @@ pre-commit stage, some examples:
   to customize)
 
 These all do the job, but have some complexities in setup and configuration that
-make them a little difficult to install and use ☹️. The whole point is to _reduce_
-friction, after all!
+make them a little difficult to install and use ☹️. The whole point is to
+_reduce_ friction, after all!
 
 ### The `pre-commit` tool
 
@@ -343,8 +343,8 @@ find it does a nice job on Markdown, Javascript, JSON, and YAML files in
 particular.
 
 Installing `prettier` can be a bit of a pain if you don't have `node` etc
-already available; `pre-commit` manages the tool itself here, which is ✨ amazing
-✨!
+already available; `pre-commit` manages the tool itself here, which is ✨
+amazing ✨!
 
 #### Python checks
 
@@ -480,8 +480,8 @@ system (`sudo apt install cppcheck` on Ubuntu) - note the `- repo: local` and
 ### Dockerfiles
 
 If you're using Docker (eg for [reproducible builds]({% post_url
-2019-12-11-reproducible-firmware-builds %}) or CI), this provides a lot of nice
-recommendations for Dockerfiles:
+2019-12-11-reproducible-firmware-builds %}) or CI), this provides a lot of nice recommendations
+for Dockerfiles:
 
 ```yaml
 - repo: https://github.com/pryorda/dockerfilelint-precommit-hooks
@@ -567,6 +567,5 @@ Here's a couple of examples of how `pre-commit` could be used in CI:
 
 <!-- prettier-ignore-start -->
 
-- [Yelp announcement of
-pre-commit](https://engineeringblog.yelp.com/2014/08/announcing-pre-commit-yelps-multi-language-package-manager-for-pre-commit-hooks.html)
+- [Yelp announcement of pre-commit](https://engineeringblog.yelp.com/2014/08/announcing-pre-commit-yelps-multi-language-package-manager-for-pre-commit-hooks.html)
 <!-- prettier-ignore-end -->

@@ -1,11 +1,11 @@
 # Introduction
 
-A minimal Cortex-M startup enviornment targetting the NRF52840-DK written entirely in C (inspired
-by [this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for illustrative purposes
+A minimal Cortex-M startup enviornment targetting the NRF52840-DK written
+entirely in C (inspired by
+[this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for
+illustrative purposes
 
 A bare bones `GCC/ARM_CM4F` of FreeRTOS was added to the project.
-
-
 
 # Compiling & Running
 
@@ -47,7 +47,8 @@ Resetting target
 (gdb) c
 ```
 
-To compile another implementation, say `assert5.c`, just change the `IMPL=` to `ASSERT5`
+To compile another implementation, say `assert5.c`, just change the `IMPL=` to
+`ASSERT5`
 
 ```
 $ IMPL=ASSERT5 make

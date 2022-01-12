@@ -1,14 +1,16 @@
 # Introduction
 
-A minimal Cortex-M startup environment targetting the NRF52840-DK written entirely in C (inspired
-by [this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for illustrative
-purposes about Hardware Watchdogs
+A minimal Cortex-M startup environment targetting the NRF52840-DK written
+entirely in C (inspired by
+[this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for
+illustrative purposes about Hardware Watchdogs
 
 A bare bones `GCC/ARM_CM4F` of FreeRTOS was added to the project.
 
-On boot, a "Ping" **FreeRTOS** task and a "Pong" **FreeRTOS** task are created. The "Ping" task sends a
-message to the "Pong" task and each time the event loop in a task runs. While the program is
-running different types of hangs can be triggered by changing the value of `g_watchdog_hang_config`:
+On boot, a "Ping" **FreeRTOS** task and a "Pong" **FreeRTOS** task are created.
+The "Ping" task sends a message to the "Pong" task and each time the event loop
+in a task runs. While the program is running different types of hangs can be
+triggered by changing the value of `g_watchdog_hang_config`:
 
 ```c
 // Modes:
@@ -42,7 +44,8 @@ $ git apply 02-patch-software-watchdog.patch
 
 # Compiling & Running
 
-The toolchain used for this example can be found on [ARM's Developer Website](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+The toolchain used for this example can be found on
+[ARM's Developer Website](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
 
 ```bash
 # Compile the code

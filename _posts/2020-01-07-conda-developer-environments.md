@@ -14,8 +14,8 @@ issue, only to find out that it depends on toolchains and packages that are no
 longer installed. This can be a major pain, and people have come up with several
 ways around it.
 
-In previous posts,
-[we have used virtualenv]({% post_url 2019-07-23-using-pypi-packages-with-GDB %}#virtual-environment)
+In previous posts, [we have used
+virtualenv]({% post_url 2019-07-23-using-pypi-packages-with-GDB %}#virtual-environment)
 to manage our Python packages. What if you would like to easily manage non
 Python dependencies? This is where Conda comes into play.
 
@@ -178,8 +178,7 @@ different firmware projects in flight. This could be a legacy project and a
 newer one. I imagine the following wouldn't be far off:
 
 **Old Project Dependencies:** GNU Make 4.1, GCC 5.4.1, GDB 7.11, Python
-3.5<br />
-**New Project Dependencies:** GNU Make 4.2.1, GCC 8.3.1, GDB 8.3,
+3.5<br /> **New Project Dependencies:** GNU Make 4.2.1, GCC 8.3.1, GDB 8.3,
 Python 3.6
 
 In the above example, to be able to go back and forth between these two
@@ -432,8 +431,7 @@ entry for `ccache` in our `environment.yml` and this becomes trivial.
 ```yaml
 dependencies:
   # System Packages
-  ...
-  - ccache
+  ... - ccache
 ```
 
 The next time a developer runs `conda env update`, they'll have `ccache`
@@ -722,5 +720,7 @@ in sync.
 
 [^1]: [Conda](https://docs.conda.io/en/latest/)
 [^2]: [Virtualenv](https://virtualenv.pypa.io/en/latest/)
-[^3]: [Docker Volume Mount Filesystem Performance](https://docs.docker.com/docker-for-mac/osxfs-caching/)
+[^3]:
+    [Docker Volume Mount Filesystem Performance](https://docs.docker.com/docker-for-mac/osxfs-caching/)
+
 [^4]: [CppUTest](http://cpputest.github.io/)

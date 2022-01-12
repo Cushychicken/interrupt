@@ -1,8 +1,8 @@
 ---
 title: "Using Python PyPi Packages within GDB/LLDB"
 description:
-  "How to setup GDB/LLDB, virtualenv, and Python to use PyPi packages in GDB/LLDB
-  scripts"
+  "How to setup GDB/LLDB, virtualenv, and Python to use PyPi packages in
+  GDB/LLDB scripts"
 author: tyler
 tags: [python, gdb]
 ---
@@ -354,7 +354,7 @@ and we will use the same `.c` example located
 [here]({% post_url 2019-07-02-automate-debugging-with-gdb-python-api %}#example-usage)
 
 > If you need to get the previous `.c` file compiled and running to test out the
-> following commands, refer to the [previous
+> following commands, refer to the [previous >
 > post]({% post_url 2019-07-02-automate-debugging-with-gdb-python-api %}) for
 > instructions.
 

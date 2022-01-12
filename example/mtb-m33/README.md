@@ -1,12 +1,14 @@
 # Introduction
 
-A minimal Cortex-M startup environment targetting the DA14695 Development Kit – USB[^1] written entirely in C (inspired
-by [this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for illustrative
-purposes about the Micro Trace Buffer (MTB)/
+A minimal Cortex-M startup environment targetting the DA14695 Development Kit –
+USB[^1] written entirely in C (inspired by
+[this project](https://github.com/noahp/minimal-c-cortex-m)) written solely for
+illustrative purposes about the Micro Trace Buffer (MTB)/
 
 A bare bones FreeRTOS was added to the project.
 
-The usefuleness of the MTB can be explored through several different compile/runtime options:
+The usefuleness of the MTB can be explored through several different
+compile/runtime options:
 
 ```c
 //! Modes
@@ -31,7 +33,8 @@ volatile int g_trace_example_config = TRACE_EXAMPLE_CONFIG;
 
 # Compiling & Running
 
-The toolchain used for this example can be found on [ARM's Developer Website](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+The toolchain used for this example can be found on
+[ARM's Developer Website](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
 
 ```bash
 # Compile the code

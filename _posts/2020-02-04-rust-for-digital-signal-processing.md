@@ -8,8 +8,8 @@ image: /img/rust-dsp/rust-dsp-code.png
 
 Like many firmware developers, I've been curious about the potential Rust can
 have in the embedded space. After reading James Munns' [great
-article]({% post_url 2019-12-17-zero-to-main-rust-1 %}), I decided to
-find a project I could use Rust for to learn.
+article]({% post_url 2019-12-17-zero-to-main-rust-1 %}), I decided to find a
+project I could use Rust for to learn.
 
 We're still in the early days of Rust on embedded. Given all the chipset SDKs
 provided in C, the dominance of K&R's language is assured for years to come. I
@@ -28,7 +28,7 @@ based on the ubiquitous
 
 In this post, I go over how Rust can be used to implement DSP algorithms for
 firmware today, and compare the process and performance to the equivalent code
-    written with CMSIS-DSP.
+written with CMSIS-DSP.
 
 <!-- excerpt end -->
 
@@ -54,8 +54,8 @@ There are good instructions on how to do this online[^2], I've summarized them
 below.
 
 First, we use the `cargo` package manager to create a new project. Cargo is the
-default for Rust packages, which are usually called "crates". We can pass
-Cargo the `--lib` flag to specify that the project is a library.
+default for Rust packages, which are usually called "crates". We can pass Cargo
+the `--lib` flag to specify that the project is a library.
 
 ```bash
 $ cargo new dsp_rs --lib
@@ -72,9 +72,9 @@ modify this file slightly:
 1. Since we want the library to be static rather than dynamic, we must indicate
    it under `crate-type`.
 2. We will add a dependency on another crate, `panic-halt`, which we use as the
-   default panic behavior for our project. `panic`[^1] is one of the few functions
-   required by the Rust runtime on a given platform. Conveniently, `panic-halt` has
-   an implementation we can use.
+   default panic behavior for our project. `panic`[^1] is one of the few
+   functions required by the Rust runtime on a given platform. Conveniently,
+   `panic-halt` has an implementation we can use.
 
 Here's our `Cargo.toml`:
 
@@ -95,6 +95,7 @@ Now that that's out of the way, we can start implementing our library.
 Let's start with a simple algorithm:
 
 Given an array of 200 floating point numbers:
+
 1. scale it to a dynamic factor
 2. offset the resulting array using an arbitrary number
 3. get the average of that new array
@@ -192,8 +193,9 @@ our program, and generated debug & program output. In the directory
 `target/thumbv7em-none-eabihf/debug/`, we can find our static library:
 `libdsp_rs.a`. Impressive!
 
->  Tip: To compile our code for the same target every time, we can create the
->  file `.cargo/config` in the root directory and add the following lines:
+> Tip: To compile our code for the same target every time, we can create the
+> file `.cargo/config` in the root directory and add the following lines:
+>
 > ```
 > [build]
 > # Pick ONE of these compilation targets by uncommenting the corresponding line:
@@ -327,19 +329,21 @@ Like most compilers, `rustc` has multiple optimization levels[^3].
 #### Speed
 
 Here, the C project has been compiled using GCC's `-03` optimization level which
-turns on all optimizations for performance, no matter the code size or compilation time[^4].
+turns on all optimizations for performance, no matter the code size or
+compilation time[^4].
 
-As for Rust, we have been compiling in debug mode, which disables all optimizations. One simple
-improvement we can make is to simply build the library with the `--release` flag.
+As for Rust, we have been compiling in debug mode, which disables all
+optimizations. One simple improvement we can make is to simply build the library
+with the `--release` flag.
 
 ```bash
 $ cargo build --target thumbv7em-none-eabihf --release
 ```
 
-> Do not forget to copy the resulting `.a` file over to your project, and to call
-> (`make clean`) if there is no modification to the code because the Makefile
-> won't detect that the lib file has changed (at least the simple Makefile I'm
-> using).
+> Do not forget to copy the resulting `.a` file over to your project, and to
+> call (`make clean`) if there is no modification to the code because the
+> Makefile won't detect that the lib file has changed (at least the simple
+> Makefile I'm using).
 
 Let's look at the results:
 
@@ -368,6 +372,7 @@ We must make sure that Rust performance does not come at an unreasonable code
 size cost.
 
 To compare code size, we compile 4 binaries:
+
 - one calling C function and Rust function using the Debug library
 - one calling C function and Rust function using the Release library
 - one calling only our Rust function,
@@ -375,12 +380,12 @@ To compare code size, we compile 4 binaries:
 
 The table below summarizes the results:
 
-| Functions called          | Binary size | Comments                                         |
-| ------------------------- | ----------- | ------------------------------------------------ |
-| Both C and Rust (debug)   | 18.712kB    | Our baseline                                     |
-| Both C and Rust (release) | 16.456kB    | A ~2kB improvement with release optimizations    |
-| C only                    | 16.024kB    | The Rust library takes 432 bytes                 |
-| Rust only (release)       | 15.944kB    | The C library takes 512 bytes,                   |
+| Functions called          | Binary size | Comments                                      |
+| ------------------------- | ----------- | --------------------------------------------- |
+| Both C and Rust (debug)   | 18.712kB    | Our baseline                                  |
+| Both C and Rust (release) | 16.456kB    | A ~2kB improvement with release optimizations |
+| C only                    | 16.024kB    | The Rust library takes 432 bytes              |
+| Rust only (release)       | 15.944kB    | The C library takes 512 bytes,                |
 
 Far from being unreasonable, there is in fact no real code size tradeoff between
 C & Rust for our example. This is exciting!
@@ -402,7 +407,7 @@ Cortex-M4 target. Let's check this out.
 > Note on floating point portability: Despite IEEE standardization, you may find
 > that different architectures produce different results for the same floating
 > point calculations. There are
-> [interesting](https://gafferongames.com/post/floating_point_determinism/)
+> [interesting](https://gafferongames.com/post/floating_point_determinism/) >
 > [discussions](https://news.ycombinator.com/item?id=9837342) on this topic
 > online. Long story short, expect small variations in the results across
 > platforms.
@@ -473,9 +478,9 @@ tools with the language, Rust has enabled a vibrant ecosystem to spring. Rather
 than reinvent the wheel, Rust programmers rely on third party libraries
 throughout their projects.
 
-Many of the safety features implemented in the compiler make
-Rust a much more forgiving language than C. Rather than crashes, Rust developers
-are faced with verbose error messages emitted at compile time.
+Many of the safety features implemented in the compiler make Rust a much more
+forgiving language than C. Rather than crashes, Rust developers are faced with
+verbose error messages emitted at compile time.
 
 Last but not least, Rust is free and open-source! Between the low cost,
 expressive syntax, solid ecosystem, and the fact that it does not need to be
@@ -496,10 +501,24 @@ your experience in the comments!
 
 ## References
 
-[^1]: [Rust and the panic behavior]({% post_url 2019-12-17-zero-to-main-rust-1 %}#something-just-for-rust)
-[^2]: [A little Rust with your C](https://rust-embedded.github.io/book/interoperability/rust-with-c.html)
-[^3]: [Optimize Rust for speed](https://rust-embedded.github.io/book/unsorted/speed-vs-size.html#optimize-for-speed)
-[^4]: [Code Size Optimization: GCC Compiler Flags]({% post_url 2019-08-20-code-size-optimization-gcc-flags %}#changing-the-optimization-level)
-[^5]: [Cycle Count register](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0439b/BABJFFGJ.html)
-[^6]: [Issue: Ability to set crate-type depending on target](https://github.com/rust-lang/cargo/issues/4881)
+[^1]:
+    [Rust and the panic
+    behavior]({% post_url 2019-12-17-zero-to-main-rust-1 %}#something-just-for-rust)
+
+[^2]:
+    [A little Rust with your C](https://rust-embedded.github.io/book/interoperability/rust-with-c.html)
+
+[^3]:
+    [Optimize Rust for speed](https://rust-embedded.github.io/book/unsorted/speed-vs-size.html#optimize-for-speed)
+
+[^4]:
+    [Code Size Optimization: GCC Compiler
+    Flags]({% post_url 2019-08-20-code-size-optimization-gcc-flags %}#changing-the-optimization-level)
+
+[^5]:
+    [Cycle Count register](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0439b/BABJFFGJ.html)
+
+[^6]:
+    [Issue: Ability to set crate-type depending on target](https://github.com/rust-lang/cargo/issues/4881)
+
 [^7]: [Command-line apps with Rust](https://www.rust-lang.org/what/cli)

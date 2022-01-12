@@ -34,9 +34,9 @@ Today, it supports x86 (Intel Quark), Cortex-A (NVIDIA Tegra), Cortex-M, SPARC
 (Leon), and RISC-V based platforms.
 
 Renode can take the same firmware you are running in production, and run it
-against emulated cores, peripherals, and even sensors and actuators. Better
-yet, its extensive networking support and multi-system emulation make it a shoe
-in for testing systems made up of multiple devices talking together.
+against emulated cores, peripherals, and even sensors and actuators. Better yet,
+its extensive networking support and multi-system emulation make it a shoe in
+for testing systems made up of multiple devices talking together.
 
 With Renode, you can start development before your hardware is ready, test your
 firmware without deploying racks of hardware, and shorten your iteration cycles
@@ -60,8 +60,10 @@ This guide was written on MacOS, though it is not OS specific.
 
 To verify your Renode installation, you can run one of the examples:
 
-1. Open Renode, on MacOS I prefer to use the command line directly with `$ sh /Applications/Renode.app/Contents/MacOS/macos_run.command`
-2. A Renode terminal window will open. Load the example with `start @scripts/single-node/stm32f4_discovery.resc`
+1. Open Renode, on MacOS I prefer to use the command line directly with
+   `$ sh /Applications/Renode.app/Contents/MacOS/macos_run.command`
+2. A Renode terminal window will open. Load the example with
+   `start @scripts/single-node/stm32f4_discovery.resc`
    ![]({% img_url intro-to-renode/renode-first-demo-start.png %})
 3. A second terminal window should open, displaying serial output
    ![]({% img_url intro-to-renode/renode-first-demo-output.png %})
@@ -276,8 +278,8 @@ The easiest way to modify our Machine to add the CCM RAM is to write a Renode
 Platform (or "repl") file. Repl files use YAML-like syntax to define
 peripherals, including their type, address, and size.
 
-You can read more about the Platform Description file format in the [Renode
-Documentation](https://renode.readthedocs.io/en/latest/advanced/platform_description_format.html)
+You can read more about the Platform Description file format in the
+[Renode Documentation](https://renode.readthedocs.io/en/latest/advanced/platform_description_format.html)
 Adding our CCM region requires the following:
 
 ```
@@ -317,7 +319,8 @@ files come in.
 Not much documentation can be found on `.resc` files, but here are a few things
 I was able to figure out:
 
-1. variables can be created with `$` and assigned with `=`. For example: `$hello = "world"`.
+1. variables can be created with `$` and assigned with `=`. For example:
+   `$hello = "world"`.
 2. renode are executed in the order written
 3. macros can be defined with the keyword `macro`, and start and end with `"""`
 
@@ -354,10 +357,10 @@ sh /Applications/Renode.app/Contents/MacOS/macos_run.command renode-config.resc
 ```
 
 > **Reset macro**: Renode looks for a macro named "reset", and uses it to reset
-> the machine when the `machine Reset` or `machine RequestReset` are issued. In our script,
-> we use that macro to reload our elf file every time, so we do not have to do
-> it manually between resets. This also guarantees that the latest elf file is
-> picked up and allows us to iterate on code quickly.
+> the machine when the `machine Reset` or `machine RequestReset` are issued. In
+> our script, we use that macro to reload our elf file every time, so we do not
+> have to do it manually between resets. This also guarantees that the latest
+> elf file is picked up and allows us to iterate on code quickly.
 
 ### Managing machine lifecycle
 
@@ -444,10 +447,11 @@ First, we enable the GDB server and bind it to port 3333:
 (machine-0)
 ```
 
-> Note: For the example config we have added this to renode-config.resc so it happens automatically
-> when spinning up the environment
+> Note: For the example config we have added this to renode-config.resc so it
+> happens automatically when spinning up the environment
 
-In a separate terminal window, we start GDB and connect to the server on port 3333.
+In a separate terminal window, we start GDB and connect to the server on
+port 3333.
 
 ```
 $ arm-none-eabi-gdb renode-example.elf
@@ -638,4 +642,5 @@ All the code used in this blog post is aavailable on
 [^1]: https://github.com/libopencm3/libopencm3
 [^2]: https://github.com/libopencm3/libopencm3-template
 [^3]: https://robotframework.org/
-[^4]: https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html
+[^4]:
+    https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html
